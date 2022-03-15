@@ -50,3 +50,13 @@ footer {
     border-radius: 10px;
 }
 
+.newItem {
+    color: grey;
+    border: none;
+    background-color: white;
+}
+
+.listItem {
+    color: rgb(0, 125, 4);
+}
+
