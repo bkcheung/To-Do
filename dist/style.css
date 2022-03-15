@@ -13,8 +13,12 @@ header, footer {
 }
 
 header {
-    font-size: 4vw;
+    font-size: 1.5em;
     background-color: rgb(136, 216, 136);
+}
+
+#container {
+    min-height: 55vh;
 }
 
 footer {
@@ -44,6 +48,7 @@ footer {
 
 #newProject {
     background-color: rgb(197, 237, 197);
+    font-size: 1.1em;
     padding: 20px;
     margin: 20px;
     border: none;
@@ -58,5 +63,6 @@ footer {
 
 .listItem {
     color: rgb(0, 125, 4);
+    margin-bottom: 10px;
 }
 
