@@ -1,0 +1,25 @@
+{
+  "name": "to-do",
+  "version": "1.0.0",
+  "description": "To Do List Project for the Odin Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkcheung/To-Do.git"
+  },
+  "author": "Bonnie Cheung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkcheung/To-Do/issues"
+  },
+  "homepage": "https://github.com/bkcheung/To-Do#readme",
+  "devDependencies": {
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
