@@ -1,8 +1,9 @@
 // import './style.css';
 
 const projectFactory = (name) => {
-    let list = [];
-    return {name, list}
+    let pList = [];
+    let id;
+    return {name, id, pList}
 };
 
 const listItemFactory = (description) => {
@@ -13,7 +14,7 @@ const listItemFactory = (description) => {
 };
 
 const toDoList = (() => {
-    this.list = [];
+    this.masterList = [];
 
     const _makeProjectDiv = (project) => {
         const container = document.getElementById('container');
@@ -24,24 +25,57 @@ const toDoList = (() => {
 
         const newDivHeader = document.createElement('div');
         newDivHeader.classList.add("projectHeader");
-        newDivHeader.setAttribute('pName', project.name);
+        // newDivHeader.setAttribute('pName', project.name);
         newDivHeader.innerHTML = project.name;
 
         const newDivContent = document.createElement('div');
         newDivContent.classList.add("projectContent");
-        newDivContent.setAttribute('pName', project.name);
+        newDivContent.setAttribute('id', project.id); //unique ID for content area
 
+        // newDivContent.appendChild(newItemButton);
         newDiv.append(newDivHeader, newDivContent);
         container.appendChild(newDiv);
+
+        _genPContent(project);
+
+    }
+
+    const _genPContent = (project) => {
+        const projectList = project.pList;
+        const projectCont = document.getElementById(`${project.id}`);
+        projectCont.innerHTML = '';
+
+        projectList.forEach(element => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('listItem');
+            listItem.innerHTML = element.description;
+            projectCont.appendChild(listItem);
+        });
+
+        const newItemButton = document.createElement('button');
+        newItemButton.classList.add("newItem");
+        newItemButton.setAttribute('pName', project.name);
+        newItemButton.innerText = "Add Item";
+        newItemButton.setAttribute('onclick', `toDoList.addItem('New item',${project.id})`);
+        projectCont.appendChild(newItemButton);
+        
     }
 
     const addProject = (name) => {
         const newProj = projectFactory(name);
-        list.push(newProj);
+        newProj.id = masterList.length;
+        masterList.push(newProj);
         _makeProjectDiv(newProj);
     }
 
+    const addItem = (description, listId) => {
+        const newItem = listItemFactory(description);
+        const project = masterList[listId];
+        project.pList.push(newItem);
+        _genPContent(project);
+    }
+
     return {
-        list, addProject
+        masterList, addProject, addItem
     }
 })();
