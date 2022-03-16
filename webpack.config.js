@@ -9,11 +9,11 @@ module.exports = {
   devServer: {
       static: './dist'
   },
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       title: 'To Do',
-//     }),
-//   ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'To Do',
+    }),
+  ],
   output: {
     filename: '[name].main.js',
     path: path.resolve(__dirname, 'dist'),
